@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('e_wallet', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_ewallet');
+            $table->string('no_hp_ewallet');
+            $table->date('tgl_pembayaran_ewallet');
+            $table->boolean('lunas_ewallet')->default(false);
             $table->timestamps();
         });
     }

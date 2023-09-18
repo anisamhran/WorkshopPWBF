@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('bank', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_bank');
+            $table->string('no_rek');
+            $table->date('tgl_pembayaran_bank');
+            $table->boolean('lunas_bank')->default(false);
             $table->timestamps();
         });
     }
