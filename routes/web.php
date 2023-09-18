@@ -23,3 +23,4 @@ Route::get('/home-admin', [\App\Http\Controllers\AdminController::class, 'index'
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/pekerja', [\App\Http\Controllers\HomeController::class, 'pekerja'])->name('pekerja');
 
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
