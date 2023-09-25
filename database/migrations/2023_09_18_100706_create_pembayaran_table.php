@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('transaksi_kontrak_id');
             $table->date('tgl_pembayaran');
             $table->boolean('lunas')->default(false);
             $table->timestamps();
+
+            $table->foreign('transaksi_kontrak_id')->references('id')->on('transaksi_kontrak')->onDelete('cascade');
         });
     }
 
@@ -25,5 +28,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('pembayaran');
+        Schema::table('pembayaran', function (Blueprint $table) {
+            $table->foreignId('pembayaran_transaksi_kontrak_id_foreign');
+            $table->dropForeign('pembayaran_transaksi_kontrak_id_foreign');
+        });
     }
 };

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_ewallet');
             $table->string('no_hp_ewallet');
-            $table->date('tgl_pembayaran_ewallet');
             $table->boolean('lunas_ewallet')->default(false);
             $table->timestamps();
         });

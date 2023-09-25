@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('e_wallet', function (Blueprint $table) {
-            //
+        Schema::table('transaksi_kontrak', function (Blueprint $table) {
+            $table->unsignedBigInteger('pekerja_id');
+            $table->foreign('pekerja_id')->references('id')->on('pekerja');
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('e_wallet', function (Blueprint $table) {
+        Schema::table('transaksi_kontrak', function (Blueprint $table) {
             //
         });
     }

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('dokumen', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pembayaran_id');
+            $table->string('document');
             $table->timestamps();
+
+            $table->foreign('pembayaran_id')->references('id')->on('pembayaran')->onDelete('cascade');
+
         });
     }
 
@@ -23,5 +28,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('dokumen');
+        Schema::table('dokumen', function (Blueprint $table) {
+            // $table->foreignId('users_role_id_foreign');
+            // $table->dropColumn('role_id');
+        });
     }
 };
