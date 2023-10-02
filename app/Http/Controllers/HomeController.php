@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('frontend.home');
+        return view('frontend.homepage');
     }
 
     /**
@@ -20,6 +20,16 @@ class HomeController extends Controller
     public function pekerja()
     {
         return view('frontend.pekerja');
+    }
+
+    public function review()
+    {
+        return view('frontend.review');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
     }
 
     /**

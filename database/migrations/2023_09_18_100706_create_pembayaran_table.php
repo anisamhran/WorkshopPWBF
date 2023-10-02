@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('transaksi_kontrak_id');
             $table->date('tgl_pembayaran');
             $table->boolean('lunas')->default(false);
+            $table->boolean('status')->default(0);
             $table->timestamps();
-
             $table->foreign('transaksi_kontrak_id')->references('id')->on('transaksi_kontrak')->onDelete('cascade');
         });
     }

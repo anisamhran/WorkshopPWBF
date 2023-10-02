@@ -14,13 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.home');
+    return view('frontend.homepage');
 });
 
-Route::get('/home-admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
+Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
 
 //USER
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/pekerja', [\App\Http\Controllers\HomeController::class, 'pekerja'])->name('pekerja');
-
+Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/review', [\App\Http\Controllers\HomeController::class, 'review'])->name('review');
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');

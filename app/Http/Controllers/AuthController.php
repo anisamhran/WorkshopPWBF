@@ -14,6 +14,11 @@ class AuthController extends Controller
         return view('frontend.register');
     }
 
+    public function login()
+    {
+        return view('frontend.login');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
