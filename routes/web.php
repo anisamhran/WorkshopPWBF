@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
 Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
+route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
 Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
 
 //USER
