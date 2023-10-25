@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('frontend.homepage');
 });
 
+
 //ADMIN
 Route::middleware(['rolemiddleware:1'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh admin
@@ -59,6 +60,12 @@ Route::middleware(['rolemiddleware:3'])->group(function () {
 Route::middleware(['rolemiddleware:2'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh user yang sudah login
 });
+=======
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
+route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
+Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
+>>>>>>> 4de98e6d892e9ecb88ca6bd451db42ff911bf7f9
 
 //USER
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
