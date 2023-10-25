@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 //ADMIN
-Route::middleware(['rolemiddleware:1'])->group(function () {
+// Route::middleware(['rolemiddleware:1'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
     Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
@@ -48,24 +48,24 @@ Route::middleware(['rolemiddleware:1'])->group(function () {
     Route::delete('/hapus-kota/{id}', [\App\Http\Controllers\KotaController::class, 'destroy'])->name('destroy-kota');
     Route::get('/data-kota-dihapus', [\App\Http\Controllers\KotaController::class, 'deleted'])->name('deleted-kota');
     Route::get('/restore-kota/{id}', [\App\Http\Controllers\KotaController::class, 'restore'])->name('restore-kota');
-});
+// });
 
 //MANAGER
-Route::middleware(['rolemiddleware:3'])->group(function () {
+// Route::middleware(['rolemiddleware:3'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh manager
     Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
 
-});
+// });
 
-Route::middleware(['rolemiddleware:2'])->group(function () {
+// Route::middleware(['rolemiddleware:2'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh user yang sudah login
-});
-=======
+// });
+
+
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
 Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
 route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
 Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
->>>>>>> 4de98e6d892e9ecb88ca6bd451db42ff911bf7f9
 
 //USER
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');

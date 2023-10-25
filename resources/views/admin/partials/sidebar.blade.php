@@ -73,38 +73,48 @@
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
-    <li class="menu-item ">
-      <a href="{{ route('master-provinsi') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Master Provinsi</div>
-      </a>
-    </li>
-    <li class="menu-item ">
-      <a href="{{ route('deleted-provinsi') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Provinsi Terhapus</div>
-      </a>
-    </li>
-    <li class="menu-item ">
-      <a href="{{ route('master-kota') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Master Kota</div>
-      </a>
-    </li>
-    <li class="menu-item ">
-      <a href="{{ route('deleted-kota') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Kota Terhapus</div>
-      </a>
-    </li>
-
-    <!-- Layouts -->
     <li class="menu-item">
-   <a href="{{ route('datapekerja') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div data-i18n="Layouts">Pekerja</div>
+      <a href="#" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Data Master</div>
+          {{-- <i class="menu-toggle bx bx-chevron-down"></i> --}}
       </a>
-    </li> 
+      <ul class="submenu">
+          <li class="menu-item">
+              <a href="{{ route('master-provinsi') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Master Provinsi</div>
+              </a>
+          </li>
+          <li class="menu-item">
+              <a href="{{ route('deleted-provinsi') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Provinsi Terhapus</div>
+              </a>
+          </li>
+          <li class="menu-item">
+              <a href="{{ route('master-kota') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Master Kota</div>
+              </a>
+          </li>
+          <li class="menu-item">
+              <a href="{{ route('deleted-kota') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Kota Terhapus</div>
+              </a>
+          </li>
+      </ul>
+  </li>
+  <li class="menu-item">
+      <a href="{{ route('datapekerja') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Layouts">Pekerja</div>
+      </a>
+  </li>
+  
+    
+    
 
       <li class="menu-item ">
         <a href="{{ route('admincontact') }}" class="menu-link">
