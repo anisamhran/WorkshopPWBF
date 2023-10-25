@@ -1,4 +1,8 @@
 @extends('frontend.partials.main')
+@section('title')
+    Pekerja
+@endsection
+
 
 @section('content')
 <div class="page-head"> 

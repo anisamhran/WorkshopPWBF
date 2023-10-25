@@ -4,7 +4,7 @@
 <h3>Data Pekerja</h3>
 <div class="card">
     <div class="card-header">
-      <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('pekerja/add') }}'">
+      <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ route('addpekerja') }}'">
         <i class="fas fa-plus-circle"></i> Tambah Pekerja
       </button>
     </div>
@@ -18,33 +18,34 @@
      <table class="table table-sm table-striped table-bordered">
         <thead>
             <tr>
-                    <th>No</th>
-                    <th>ID</th>
+                    <th>ID Pekerja</th>
                     <th>Nama Pekerja</th>
                     <th>Tanggal Lahir</th>
+                    <th>Kota</th>
                     <th>Alamat</th>
                     <th>No. Telepon</th>
-                    <th>Foto</th>
+                    <th>Foto</th> 
                     <th>KTP</th>
-                    <th>#</th>
+                    <th>Deskripsi</th>
+                    <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($pekerja as $row)
+        {{-- <tbody>
+            @foreach ($pekerjas as $pekerja)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $row->txtid}}</td>
-                    <td>{{ $row->txtnama }}</td>
-                    <td>{{ $row->txttgl }}</td>
-                    <td>{{ $row->txtalamat }}</td>
-                    <td>{{ $row->txtnohp }}</td>
-                    <td>{{ $row->formfoto }}</td>
-                    <td>{{ $row->formktp }}</td>
-                    {{-- <td>{{ $row->id }}</td> --}}
+                    <td>{{ $pekerja->txtid}}</td>
+                    <td>{{ $pekerja->txtnama }}</td>
+                    <td>{{ $pekerja->txttgl }}</td>
+                    <td>{{ $pekerja->txtalamat }}</td>
+                    <td>{{ $pekerja->txtnohp }}</td>
+                    <td>{{ $pekerja->formfoto }}</td>
+                    <td>{{ $pekerja->formktp }}</td>
+                    <td>{{ $pekerja->id }}</td>
 
                 </tr>
             @endforeach
-        </tbody>
+        </tbody> --}}
      </table>
     </div>
   </div>   

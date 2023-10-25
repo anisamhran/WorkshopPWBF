@@ -1,20 +1,22 @@
 @extends('frontend.partials.main')
-
+@section('title')
+    Home Page
+@endsection
 @section('content')
 <div class="slider">
     <div id="bg-slider" class="owl-carousel owl-theme">
 
-        <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
+        <div class="item"><img src="assets/img/slide1/slider-image-1.png" alt="GTA V"></div>
         <div class="item"><img src="assets/img/slide1/slider-image-2.jpg" alt="The Last of us"></div>
-        <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
+        <div class="item"><img src="assets/img/slide1/slider-image-3.png" alt="GTA V"></div>
 
     </div>
 </div>
 <div class="slider-content">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-            <h2>property Searching Just Got So Easy</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
+            <h2>Maid Company</h2>
+            <p>Cari Asisten Rumah Tangga dan Baby Sitter dengan mudah disini!</p>
             <div class="search-form wow pulse" data-wow-delay="0.8s">
 
                 <form action="" class=" form-inline">
@@ -209,10 +211,10 @@
                 <div class="col-sm-6 col-md-3 p0">
                     <div class="box-two proerty-item">
                         <div class="item-thumb">
-                            <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
+                            <a href="detail-pekerja-1" ><img src="assets/img/demo/property-1.jpg"></a>
                         </div>
                         <div class="item-entry overflow">
-                            <h5><a href="property-1.html" >Super nice villa </a></h5>
+                            <h5><a href="detail-pekerja-1" >Super nice villa </a></h5>
                             <div class="dot-hr"></div>
                             <span class="pull-left"><b>Area :</b> 120m </span>
                             <span class="proerty-price pull-right">$ 300,000</span>
@@ -252,11 +254,11 @@
                 <div class="col-sm-6 col-md-3 p0">
                     <div class="box-two proerty-item">
                         <div class="item-thumb">
-                            <a href="property-1.html" ><img src="assets/img/demo/property-4.jpg"></a>
+                            <a href="detail-pekerja-1" ><img src="assets/img/demo/property-4.jpg"></a>
 
                         </div>
                         <div class="item-entry overflow">
-                            <h5><a href="property-1.html" >Super nice villa </a></h5>
+                            <h5><a href="detail-pekerja-1" >Super nice villa </a></h5>
                             <div class="dot-hr"></div>
                             <span class="pull-left"><b>Area :</b> 120m </span>
                             <span class="proerty-price pull-right">$ 300,000</span>
@@ -296,10 +298,10 @@
                 <div class="col-sm-6 col-md-3 p0">
                     <div class="box-two proerty-item">
                         <div class="item-thumb">
-                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                            <a href="detail-pekerja-1" ><img src="assets/img/demo/property-3.jpg"></a>
                         </div>
                         <div class="item-entry overflow">
-                            <h5><a href="property-1.html" >Super nice villa </a></h5>
+                            <h5><a href="detail-pekerja-1" >Super nice villa </a></h5>
                             <div class="dot-hr"></div>
                             <span class="pull-left"><b>Area :</b> 120m </span>
                             <span class="proerty-price pull-right">$ 300,000</span>
@@ -313,7 +315,7 @@
                             <i class="fa fa-th"></i>
                         </div>
                         <div class="more-entry overflow">
-                            <h5><a href="property-1.html" >CAN'T DECIDE ? </a></h5>
+                            <h5><a href="detail-pekerja-1" >CAN'T DECIDE ? </a></h5>
                             <h5 class="tree-sub-ttl">Show all properties</h5>
                             <button class="btn border-btn more-black" value="All properties">All properties</button>
                         </div>

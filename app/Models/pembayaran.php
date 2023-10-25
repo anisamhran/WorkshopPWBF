@@ -9,7 +9,7 @@ class pembayaran extends Model
 {
 
     public function kontrak(){
-        return $this->belongsTo(transaksi_kontrak::class);
+        return $this->hasOne(transaksi_kontrak::class);
     }
 
     public function dokumen(){
@@ -17,8 +17,5 @@ class pembayaran extends Model
     }
 
     use HasFactory;
-    // public function bank(){
-    //     return $this->belongsTo(bank::class);
-    // } 
 
 }

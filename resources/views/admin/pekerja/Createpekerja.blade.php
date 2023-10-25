@@ -4,7 +4,7 @@
 <h3>Form Data Pekerja Baru</h3>
 <div class="card">
     <div class="card-header">
-      <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ url('pekerja') }}'">
+      <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ route('datapekerja') }}'">
          Kembali
       </button>
     </div>

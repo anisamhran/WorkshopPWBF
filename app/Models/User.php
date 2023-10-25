@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function kota(){
+        return $this->belongsTo(KotaModel::class);
+    }
+
+    public function kontrak(){
+        return $this->hasMany(transaksi_kontrak::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(RoleModel::class);
+    }
 }

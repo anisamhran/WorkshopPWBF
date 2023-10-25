@@ -19,11 +19,27 @@ class AdminController extends Controller
      */
     public function addpekerja()
     {
-        return view('admin.Createpekerja');
+        return view('admin.pekerja.Createpekerja');
     }
     public function datapekerja()
     {
-        return view('admin.datapekerja');
+        return view('admin.pekerja.datapekerja');
+    }
+    public function admin_review()
+    {
+        return view('admin.admreview');
+    }
+    public function admin_contact()
+    {
+        return view('admin.admcontact');
+    }
+    public function admin_pembayaran()
+    {
+        return view('admin.admpembayaran');
+    }
+    public function admin_laporan()
+    {
+        return view('admin.admlaporan');
     }
 
     /**

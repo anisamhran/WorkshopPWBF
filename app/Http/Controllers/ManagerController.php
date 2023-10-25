@@ -4,37 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function home()
+    public function index()
     {
-        return view('frontend.homepage');
+        return view('admin.admreview');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function pekerja()
+    public function create()
     {
-        return view('frontend.pekerja');
-    }
-    public function detail_pekerja()
-    {
-        return view('frontend.detailpekerja.pekerja-1');
-    }
-
-
-    public function review()
-    {
-        return view('frontend.review');
-    }
-
-    public function contact()
-    {
-        return view('frontend.contact');
+        //
     }
 
     /**
