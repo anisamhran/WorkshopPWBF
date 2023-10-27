@@ -36,6 +36,14 @@ class HomeController extends Controller
     {
         return view('frontend.contact');
     }
+    public function form_kontrak()
+    {
+        return view('frontend.kontrak');
+    }
+    public function form_pembayaran()
+    {
+        return view('frontend.pembayaran');
+    }
 
     /**
      * Store a newly created resource in storage.
