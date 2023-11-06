@@ -104,11 +104,10 @@
                     @enderror
                 </div>
             </div>
-            {{-- <div class="row mb-3">
+            <div class="row mb-3">
                 <label for="kategoripekerja_id" class="col-sm-2 col-form-label">Kategori Pekerja</label>
                 <div class="col-sm-10">
                     <select class="form-control form-control-sm @error('kategoripekerja_id') is-invalid @enderror" id="kategoripekerja_id" name="kategoripekerja_id">
-                        <option value="">Pilih Kategori Pekerja</option>
                         @foreach ($kategori_pekerja as $kategori)
                             <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                         @endforeach
@@ -119,7 +118,7 @@
                     </div>  
                     @enderror
                 </div>
-            </div> --}}
+            </div>
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
                     Simpan

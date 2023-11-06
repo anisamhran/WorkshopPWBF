@@ -17,8 +17,8 @@
                                     <div class="form-group">
                                         <label for="role">Login Sebagai </label>
                                         <select name="role_id" class="form-control" id="role" type="number">
-                                            <option value="1">Admin</option>
                                             <option value="2">Customer</option>
+                                            <option value="1">Admin</option>
                                             <option value="3">Manager</option>
                                         </select>
                                     </div>

@@ -2,6 +2,7 @@
 
 use App\Models\KotaModel;
 use App\Models\ProvinsiModel;
+use App\Models\KategoriPekerjaModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $provinsis = ProvinsiModel::all();
     $kotas = KotaModel::all();
+    $kategoris = KategoriPekerjaModel::all();
 
-    return view('frontend.homepage',compact('provinsis','kotas'));
+    return view('frontend.homepage',compact('provinsis','kotas','kategoris'));
 });
 
 
 //ADMIN
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // Route::middleware(['rolemiddleware:1'])->group(function () {
-=======
+// =======
 // Route::middleware(['role:1'])->group(function () {
->>>>>>> main
+// >>>>>>> main
     // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
     Route::get('/master-pekerja', [\App\Http\Controllers\PekerjaController::class, 'index'])->name('master-pekerja');
@@ -67,7 +69,7 @@ Route::get('/', function () {
 // });
 
 //MANAGER
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // Route::middleware(['rolemiddleware:3'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh manager
     Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
@@ -82,7 +84,7 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->n
 Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
 route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
 Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
-=======
+// =======
     // Route::middleware(['role:3'])->group(function () {
         // Rute-rute yang hanya dapat diakses oleh manager
         Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
@@ -98,7 +100,7 @@ Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'data
 
 
 
->>>>>>> main
+// >>>>>>> main
 
 
 //USER

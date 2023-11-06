@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pekerja');
             $table->date('tgl_lahir');
-            $table->date('tgl_lahir');
             $table->string('alamat_pekerja');
             $table->string('no_hp_ewallet', 13);
             $table->binary('foto_pekerja');

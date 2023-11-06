@@ -24,8 +24,9 @@
 
                     <div class="form-group">
                         <select id="basic" class="selectpicker show-tick form-control" title="Key word">
-                            <option value="0">ART</option>
-                            <option value="1">Baby Sitter</option>
+                            @foreach ($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                            @endforeach
                         </select>                   
                      </div>
                     <div class="form-group">                                   

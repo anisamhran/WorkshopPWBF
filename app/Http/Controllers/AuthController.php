@@ -83,7 +83,7 @@
                     $user->save();
             
                     // Redirect ke halaman login atau halaman selanjutnya
-                    return redirect()->route('master-pekerja')->with('success', 'Akun berhasil dibuat. Silakan login.');
+                    return redirect()->route('form-kontrak')->with('success', 'Akun berhasil dibuat. Silakan login.');
                 }
 
             /**
