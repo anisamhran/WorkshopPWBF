@@ -24,15 +24,16 @@
             </div>
             </div>
             <div class="row mb-3">
-            <label for="nama_provinsi" class="col-sm-2 col-form-label">Provinsi</label>
+              <label for="nama_provinsi" class="col-sm-2 col-form-label">Provinsi</label>
               <div class="col-sm-10">
-                <select name="nama_provinsi" class="form-control" id="nama_provinsi" type="number">
-                  @foreach ($provinsis as $provinsi)
-                 <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
-                  @endforeach
-           </select>
+                  <select name="provinsi_id" class="form-control" id="nama_provinsi">
+                      @foreach ($provinsis as $provinsi)
+                          <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
+                      @endforeach
+                  </select>
+              </div>
           </div>
-            </div>
+          
                       <div class="col-sm-6">
                         <button type="submit" class="btn btn-sm btn-success">
                             Save

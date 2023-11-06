@@ -107,7 +107,7 @@
       </ul>
   </li>
   <li class="menu-item">
-      <a href="{{ route('datapekerja') }}" class="menu-link">
+      <a href="{{ route('master-pekerja') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-layout"></i>
           <div data-i18n="Layouts">Pekerja</div>
       </a>
