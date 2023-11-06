@@ -209,7 +209,7 @@
                 <div class="col-sm-6 col-md-3 p0">
                     <div class="box-two proerty-item">
                         <div class="item-thumb">
-                            <a href="detail-pekerja-1" ><img src="assets/img/demo/property-1.jpg"></a>
+                            <a href="detail-pekerja-1" ><img src="assets/img/property-1/property1.jpg"></a>
                         </div>
                         <div class="item-entry overflow">
                             <h5><a href="detail-pekerja-1" >Super nice villa </a></h5>

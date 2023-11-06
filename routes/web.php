@@ -24,7 +24,11 @@ Route::get('/', function () {
 
 
 //ADMIN
+<<<<<<< HEAD
+// Route::middleware(['rolemiddleware:1'])->group(function () {
+=======
 // Route::middleware(['role:1'])->group(function () {
+>>>>>>> main
     // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
     Route::get('/master-pekerja', [\App\Http\Controllers\PekerjaController::class, 'index'])->name('master-pekerja');
@@ -63,6 +67,22 @@ Route::get('/', function () {
 // });
 
 //MANAGER
+<<<<<<< HEAD
+// Route::middleware(['rolemiddleware:3'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh manager
+    Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
+
+// });
+
+// Route::middleware(['rolemiddleware:2'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh user yang sudah login
+// });
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
+route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
+Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
+=======
     // Route::middleware(['role:3'])->group(function () {
         // Rute-rute yang hanya dapat diakses oleh manager
         Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
@@ -78,6 +98,7 @@ Route::get('/', function () {
 
 
 
+>>>>>>> main
 
 
 //USER
@@ -87,6 +108,8 @@ Route::get('/detail-pekerja-1', [\App\Http\Controllers\HomeController::class, 'd
 Route::get('/pekerja', [\App\Http\Controllers\HomeController::class, 'pekerja'])->name('pekerja');
 Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/review', [\App\Http\Controllers\HomeController::class, 'review'])->name('review');
+Route::get('/form-kontrak', [\App\Http\Controllers\HomeController::class, 'form_kontrak'])->name('form-kontrak');
+Route::get('/form-pembayaran', [\App\Http\Controllers\HomeController::class, 'form_pembayaran'])->name('form-pembayaran');
 
 
 

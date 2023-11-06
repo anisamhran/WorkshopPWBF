@@ -71,7 +71,7 @@
                     </div>
                     <!-- End description area  -->
                     <div class="text-center ">
-                        <button class="btn btn-lg btn-warning ">Kontrak</button>
+                        <button class="btn btn-lg btn-warning" onclick="window.location='{{ route('form-kontrak') }}'">Kontrak</button>
                     </div>
             </div> 
         {{-- </div> --}}
