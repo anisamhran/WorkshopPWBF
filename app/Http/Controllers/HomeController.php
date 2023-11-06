@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KotaModel;
+use App\Models\ProvinsiModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +13,10 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('frontend.homepage');
+        $provinsis = ProvinsiModel::all();
+        $kotas = KotaModel::all();
+
+        return view('frontend.homepage',compact('provinsis', 'kotas'));
     }
 
     /**

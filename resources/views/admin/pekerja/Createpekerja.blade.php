@@ -4,96 +4,129 @@
 <h3>Form Data Pekerja Baru</h3>
 <div class="card">
     <div class="card-header">
-      <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ route('datapekerja') }}'">
-         Kembali
-      </button>
+        <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ route('master-pekerja') }}'">
+            Kembali
+        </button>
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ url('pekerja') }}">
-        @csrf
-        <form>
+        <form method="POST" action="{{ route('save-pekerja') }}" enctype="multipart/form-data">
+            @csrf
             <div class="row mb-3">
-              <label for="txtid" class="col-sm-2 col-form-label">ID Pekerja</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control form-control-sm @error('txtid') is-invalid @enderror" id="txtid" name="txtid" value="{{ old('txtid') }}">
-                @error('txtid')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-            @enderror
-            </div>
-            </div>
-            <div class="row mb-3">
-              <label for="txtnama" class="col-sm-2 col-form-label">Nama lengkap</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control form-control-sm @error('txtnama') is-invalid @enderror" id="txtnama" name="txtnama">
-                @error('txtnama')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-            @enderror
-            </div>
-            </div>
-            <div class="row mb-3">
-            <label for="txttgl" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-              <div class="col-sm-10">
-                <input type="date" class="form-control form-control-sm @error('txttgl') is-invalid @enderror" id="txttgl" name="txttgl">
-              
-                @error('txttgl')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-            @enderror</div>
-            </div>
-            <div class="row mb-3">
-                <label for="txtalamat" class="col-sm-2 col-form-label">Alamat</label>
-                  <div class="col-sm-10">
-                    <textarea class="form-control" id="txtalamat" name="txtalamat @error('txtalamat') is-invalid @enderror" cols="5" rows="3">
-                         </textarea>
-                         @error('txtalamat')
-                         <div class="invalid-feedback">
-                             {{ $message }}
-                           </div>
-                     @enderror 
-                  </div>
+                <label for="nama_pekerja" class="col-sm-2 col-form-label">Nama Pekerja</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm @error('nama_pekerja') is-invalid @enderror" id="nama_pekerja" name="nama_pekerja">
+                    @error('nama_pekerja')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                <div class="row mb-3">
-                    <label for="txtnohp" class="col-sm-2 col-form-label">No. Telepon</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm @error('txtnohp') is-invalid @enderror" id="txtnohp" name="txtnohp">
-                        @error('txtnohp')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                    @enderror  
-                    </div>
-                    </div>
-                      <div class="mb-3">
-                        <label for="formfoto" class="form-label">Foto</label>
-                        <input class="form-control form-control-sm @error('formfoto') is-invalid @enderror" id="formfoto" type="file">
-                      
-                        @error('formfoto')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                    @enderror</div>
-                      <div class="mb-3">
-                        <label for="formktp" class="form-label">KTP</label>
-                        <input class="form-control form-control-sm @error('formktp') is-invalid @enderror" id="formktp" type="file">
-                      
-                        @error('formktp')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                    @enderror</div>
-                      <div class="col-sm-6">
-                        <button type="submit" class="btn btn-sm btn-success">
-                            Save
-                        </button>
-                      </div>
-                    </div>
-              </div>
             </div>
-          </form>
+            <div class="row mb-3">
+                <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control form-control-sm @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir">
+                    @error('tgl_lahir')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="alamat_pekerja" class="col-sm-2 col-form-label">Alamat Pekerja</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control form-control-sm @error('alamat_pekerja') is-invalid @enderror" id="alamat_pekerja" name="alamat_pekerja" rows="3"></textarea>
+                    @error('alamat_pekerja')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="no_hp_ewallet" class="col-sm-2 col-form-label">No. HP E-Wallet</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm @error('no_hp_ewallet') is-invalid @enderror" id="no_hp_ewallet" name="no_hp_ewallet">
+                    @error('no_hp_ewallet')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="foto_pekerja" class="col-sm-2 col-form-label">Foto Pekerja</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file @error('foto_pekerja') is-invalid @enderror" id="foto_pekerja" name="foto_pekerja">
+                    @error('foto_pekerja')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="ktp_pekerja" class="col-sm-2 col-form-label">KTP Pekerja</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file @error('ktp_pekerja') is-invalid @enderror" id="ktp_pekerja" name="ktp_pekerja">
+                    @error('ktp_pekerja')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="deskripsi_pekerja" class="col-sm-2 col-form-label">Deskripsi Pekerja</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control form-control-sm @error('deskripsi_pekerja') is-invalid @enderror" id="deskripsi_pekerja" name="deskripsi_pekerja" rows="5"></textarea>
+                    @error('deskripsi_pekerja')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="kota_id" class="col-sm-2 col-form-label">Kota</label>
+                <div class="col-sm-10">
+                    <select class="form-control form-control-sm @error('kota_id') is-invalid @enderror" id="kota_id" name="kota_id">
+                        <option value="">Pilih Kota</option>
+                        @foreach ($kotas as $kota)
+                            <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
+                        @endforeach
+                    </select>
+                    @error('kota_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            {{-- <div class="row mb-3">
+                <label for="kategoripekerja_id" class="col-sm-2 col-form-label">Kategori Pekerja</label>
+                <div class="col-sm-10">
+                    <select class="form-control form-control-sm @error('kategoripekerja_id') is-invalid @enderror" id="kategoripekerja_id" name="kategoripekerja_id">
+                        <option value="">Pilih Kategori Pekerja</option>
+                        @foreach ($kategori_pekerja as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                    @error('kategoripekerja_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>  
+                    @enderror
+                </div>
+            </div> --}}
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
+                    Simpan
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection

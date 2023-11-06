@@ -23,26 +23,24 @@
                     <button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Key word">
-                    </div>
+                        <select id="basic" class="selectpicker show-tick form-control" title="Key word">
+                            <option value="0">ART</option>
+                            <option value="1">Baby Sitter</option>
+                        </select>                   
+                     </div>
                     <div class="form-group">                                   
-                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-
-                            <option>New york, CA</option>
-                            <option>Paris</option>
-                            <option>Casablanca</option>
-                            <option>Tokyo</option>
-                            <option>Marraekch</option>
-                            <option>kyoto , shibua</option>
+                        <select id="basic" class="selectpicker show-tick form-control" title="Select your province">
+                            @foreach ($provinsis as $provinsi)
+                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
+                            @endforeach
                         </select>
+                        
                     </div>
                     <div class="form-group">                                     
-                        <select id="basic" class="selectpicker show-tick form-control">
-                            <option> -Status- </option>
-                            <option>Rent </option>
-                            <option>Boy</option>
-                            <option>used</option>  
-
+                        <select id="basic" class="selectpicker show-tick form-control" title="Select your city">
+                            @foreach ($kotas as $kota)
+                            <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\KotaModel;
+use App\Models\ProvinsiModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +16,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.homepage');
+    $provinsis = ProvinsiModel::all();
+    $kotas = KotaModel::all();
+
+    return view('frontend.homepage',compact('provinsis','kotas'));
 });
 
 
 //ADMIN
+<<<<<<< HEAD
 // Route::middleware(['rolemiddleware:1'])->group(function () {
+=======
+// Route::middleware(['role:1'])->group(function () {
+>>>>>>> main
     // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
-    Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
-    Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
+    Route::get('/master-pekerja', [\App\Http\Controllers\PekerjaController::class, 'index'])->name('master-pekerja');
+    Route::get('/create-pekerja', [\App\Http\Controllers\PekerjaController::class, 'create'])->name('create-pekerja');
+    Route::post('/save-pekerja', [\App\Http\Controllers\PekerjaController::class, 'store'])->name('save-pekerja');
+    Route::get('/edit-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'edit'])->name('edit-pekerja');
+    Route::put('/update-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'update'])->name('update-pekerja');
+    Route::delete('/hapus-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'destroy'])->name('destroy-pekerja');
+    Route::get('/data-pekerja-dihapus', [\App\Http\Controllers\PekerjaController::class, 'deleted'])->name('deleted-pekerja');
+    Route::get('/restore-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'restore'])->name('restore-pekerja');
+
     Route::get('/review-admin', [\App\Http\Controllers\AdminController::class, 'admin_review'])->name('adminreview');
     Route::get('/contact-admin', [\App\Http\Controllers\AdminController::class, 'admin_contact'])->name('admincontact');
     Route::get('/pembayaran-admin', [\App\Http\Controllers\AdminController::class, 'admin_pembayaran'])->name('adminpembayaran');
@@ -51,6 +67,7 @@ Route::get('/', function () {
 // });
 
 //MANAGER
+<<<<<<< HEAD
 // Route::middleware(['rolemiddleware:3'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh manager
     Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
@@ -65,6 +82,23 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->n
 Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
 route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
 Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
+=======
+    // Route::middleware(['role:3'])->group(function () {
+        // Rute-rute yang hanya dapat diakses oleh manager
+        Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
+
+    // });
+
+// Route::middleware(['role:2'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh user yang sudah login
+// });
+
+
+// Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+
+
+
+>>>>>>> main
 
 
 //USER
@@ -79,7 +113,8 @@ Route::get('/form-pembayaran', [\App\Http\Controllers\HomeController::class, 'fo
 
 
 
-Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'storeUser'])->name('register');
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::post('/login-proses', [\App\Http\Controllers\AuthController::class, 'login_proses'])->name('login-proses');
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

@@ -17,14 +17,7 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function addpekerja()
-    {
-        return view('admin.pekerja.Createpekerja');
-    }
-    public function datapekerja()
-    {
-        return view('admin.pekerja.datapekerja');
-    }
+  
     public function admin_review()
     {
         return view('admin.admreview');
