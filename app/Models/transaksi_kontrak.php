@@ -11,6 +11,12 @@ class transaksi_kontrak extends Model
     {
         return $this->hasOne(pembayaran::class);
     }
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    protected $table = 'transaksi_kontrak';
 
     use HasFactory;
 }

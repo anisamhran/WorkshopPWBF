@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pekerja');
             $table->date('tgl_lahir');
-            $table->date('tgl_lahir');
             $table->string('alamat_pekerja');
+            $table->integer('gaji');
             $table->string('no_hp_ewallet', 13);
-            $table->binary('foto_pekerja');
-            $table->binary('ktp_pekerja');
+            $table->string('foto_pekerja');
+            $table->string('ktp_pekerja');
             $table->text('deskripsi_pekerja');
             $table->timestamps();
         });

@@ -4,17 +4,18 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
 
 class RoleMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  int  $requiredRoleId
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next, int $requiredRoleId): Response
+    public function handle(Request $request, Closure $next, int $requiredRoleId)
     {
         // Memeriksa apakah pengguna saat ini ada dan memiliki peran (role) yang sesuai dengan yang dibutuhkan.
         if (auth()->check() && auth()->user()->role_id !== $requiredRoleId) {
@@ -22,10 +23,9 @@ class RoleMiddleware
         }
 
         if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'Silakan login untuk mengakses halaman ini.');
+            abort(403, 'Silakan login untuk mengakses halaman ini.');
         }
     
         return $next($request);
     }
-    
 }

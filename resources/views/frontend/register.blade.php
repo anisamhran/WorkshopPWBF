@@ -25,6 +25,18 @@
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password" name="password">
                                 </div>
+                                <div class="form-group">
+                                    <label for="no_hp">No hp</label>
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir">
+                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">Register</button>
                                 </div>

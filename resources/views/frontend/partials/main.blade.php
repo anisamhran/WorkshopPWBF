@@ -33,6 +33,42 @@
         <link rel="stylesheet" href="{{ asset('assets/css/owl.transitions.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    
+        {{-- <style>
+            .search-form {
+                background: transparent;
+            }
+    .slider {
+        position: relative;
+    }
+
+    .slider-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+    }
+
+    .search-form {
+        background: transparent;
+        display: inline-block;
+        padding: 20px;
+    }
+
+    /* Tambahkan gaya ini ke dalam file CSS Anda */
+
+.item-thumb img {
+    width: 100%; /* Mengisi lebar container */
+    height: 100%; /* Mengisi tinggi container */
+    object-fit: cover; /* Memastikan gambar diisi dan terpotong jika perlu */
+}
+
+        </style> --}}
+
+        
+    
     </head>
     <body>
 

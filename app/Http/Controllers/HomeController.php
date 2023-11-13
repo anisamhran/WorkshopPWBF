@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KotaModel;
+use App\Models\PekerjaModel;
 use App\Models\ProvinsiModel;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,15 @@ class HomeController extends Controller
     {
         $provinsis = ProvinsiModel::all();
         $kotas = KotaModel::all();
+        $pekerjas = PekerjaModel::all()->take(5);
+        return view('frontend.homepage',compact('provinsis', 'kotas','pekerjas'));
+    }
+    public function notifikasi()
+    {
+        // $provinsis = ProvinsiModel::all();
+        // $kotas = KotaModel::all();
 
-        return view('frontend.homepage',compact('provinsis', 'kotas'));
+        return view('frontend.notification');
     }
 
     /**
@@ -24,11 +32,14 @@ class HomeController extends Controller
      */
     public function pekerja()
     {
-        return view('frontend.pekerja');
+        $provinsis = ProvinsiModel::all();
+        $kotas = KotaModel::all();
+        return view('frontend.pekerja',compact('provinsis', 'kotas'));
     }
-    public function detail_pekerja()
+    public function detail_pekerja($id)
     {
-        return view('frontend.detailpekerja.pekerja-1');
+        $pekerja = PekerjaModel::findOrFail($id); // Sesuaikan dengan model dan query Anda
+        return view('frontend.pekerja-details', compact('pekerja'));    
     }
 
 
@@ -41,10 +52,7 @@ class HomeController extends Controller
     {
         return view('frontend.contact');
     }
-    public function form_kontrak()
-    {
-        return view('frontend.kontrak');
-    }
+  
     public function form_pembayaran()
     {
         return view('frontend.pembayaran');

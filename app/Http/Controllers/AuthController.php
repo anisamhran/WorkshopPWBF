@@ -36,7 +36,7 @@
             
                 if ($user && Hash::check($request->password, $user->password)) {
                     Auth::login($user);
-                    switch ($request->role) {
+                    switch ($request->role_id) {
                         case 1:
                             return redirect()->route('landingpage');
                         case 2:
@@ -73,6 +73,9 @@
                         'nama' => 'required',
                         'email' => 'required',
                         'password' => 'required',
+                        'no_hp' => 'required',
+                        'tgl_lahir' => 'required',
+                        'alamat' => 'required',
                     ]);
             
                     // Buat dan simpan pengguna baru
@@ -80,10 +83,13 @@
                     $user->nama = $request->input('nama');
                     $user->email = $request->input('email');
                     $user->password = Hash::make($request->input('password'));
+                    $user->alamat = $request->input('alamat');
+                    $user->no_hp = $request->input('no_hp');
+                    $user->tgl_lahir = $request->input('tgl_lahir');
                     $user->save();
             
                     // Redirect ke halaman login atau halaman selanjutnya
-                    return redirect()->route('master-pekerja')->with('success', 'Akun berhasil dibuat. Silakan login.');
+                    return redirect()->route('form-kontrak')->with('success', 'Akun berhasil dibuat. Silakan login.');
                 }
 
             /**

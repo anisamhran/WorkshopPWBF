@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaksi_kontrak', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tgl_transaksi');
+            $table->dateTime('tgl_transaksi')->default(now());
             $table->date('tgl_mulai_kontrak');
             $table->date('tgl_akhir_kontrak');
             $table->boolean('ubah_alamat');

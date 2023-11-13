@@ -25,6 +25,7 @@
                     <th>Kota</th>
                     <th>Alamat</th>
                     <th>No. Telepon</th>
+                    <th>Gaji</th>
                     <th>Foto</th>
                     <th>KTP</th>
                     <th>Deskripsi</th>
@@ -40,8 +41,9 @@
                     <td>{{ $pekerja->kota->nama_kota }}</td>
                     <td>{{ $pekerja->alamat_pekerja }}</td>
                     <td>{{ $pekerja->no_hp_ewallet }}</td>
-                    <td><img src="{{ asset($pekerja->foto_pekerja) }}" alt="Foto Pekerja" width="50"></td>
-                    <td><img src="{{ asset($pekerja->ktp_pekerja) }}" alt="KTP Pekerja" width="50"></td>
+                    <td>{{ $pekerja->gaji }}</td>
+                    <td><img src="{{ asset('uploads/foto_pekerja/' . $pekerja->foto_pekerja) }}" alt="Foto Pekerja" width="50"></td>
+                    <td><img src="{{ asset('uploads/ktp_pekerja/' . $pekerja->ktp_pekerja)}}" alt="KTP Pekerja" width="50"></td>                    
                     <td>{{ $pekerja->deskripsi_pekerja }}</td>
                     <td>
                         <a href="{{ route('edit-pekerja', $pekerja->id) }}" class="btn btn-sm btn-warning" title="Edit data">

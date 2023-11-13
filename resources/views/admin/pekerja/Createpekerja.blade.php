@@ -11,6 +11,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route('save-pekerja') }}" enctype="multipart/form-data">
             @csrf
+        
             <div class="row mb-3">
                 <label for="nama_pekerja" class="col-sm-2 col-form-label">Nama Pekerja</label>
                 <div class="col-sm-10">
@@ -22,6 +23,7 @@
                     @enderror
                 </div>
             </div>
+        
             <div class="row mb-3">
                 <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                 <div class="col-sm-10">
@@ -33,6 +35,7 @@
                     @enderror
                 </div>
             </div>
+        
             <div class="row mb-3">
                 <label for="alamat_pekerja" class="col-sm-2 col-form-label">Alamat Pekerja</label>
                 <div class="col-sm-10">
@@ -44,6 +47,7 @@
                     @enderror
                 </div>
             </div>
+        
             <div class="row mb-3">
                 <label for="no_hp_ewallet" class="col-sm-2 col-form-label">No. HP E-Wallet</label>
                 <div class="col-sm-10">
@@ -56,6 +60,19 @@
                 </div>
             </div>
             <div class="row mb-3">
+                <label for="no_hp_ewallet" class="col-sm-2 col-form-label">Gaji</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control form-control-sm @error('no_hp_ewallet') is-invalid @enderror" id="no_hp_ewallet" name="gaji">
+                    @error('no_hp_ewallet')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+        
+            <!-- File Input for Foto Pekerja -->
+            <div class="row mb-3">
                 <label for="foto_pekerja" class="col-sm-2 col-form-label">Foto Pekerja</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control-file @error('foto_pekerja') is-invalid @enderror" id="foto_pekerja" name="foto_pekerja">
@@ -66,6 +83,8 @@
                     @enderror
                 </div>
             </div>
+        
+            <!-- File Input for KTP Pekerja -->
             <div class="row mb-3">
                 <label for="ktp_pekerja" class="col-sm-2 col-form-label">KTP Pekerja</label>
                 <div class="col-sm-10">
@@ -77,6 +96,8 @@
                     @enderror
                 </div>
             </div>
+        
+            <!-- Textarea for Deskripsi Pekerja -->
             <div class="row mb-3">
                 <label for="deskripsi_pekerja" class="col-sm-2 col-form-label">Deskripsi Pekerja</label>
                 <div class="col-sm-10">
@@ -88,6 +109,8 @@
                     @enderror
                 </div>
             </div>
+        
+            <!-- Select Dropdown for Kota -->
             <div class="row mb-3">
                 <label for="kota_id" class="col-sm-2 col-form-label">Kota</label>
                 <div class="col-sm-10">
@@ -104,28 +127,15 @@
                     @enderror
                 </div>
             </div>
-            {{-- <div class="row mb-3">
-                <label for="kategoripekerja_id" class="col-sm-2 col-form-label">Kategori Pekerja</label>
-                <div class="col-sm-10">
-                    <select class="form-control form-control-sm @error('kategoripekerja_id') is-invalid @enderror" id="kategoripekerja_id" name="kategoripekerja_id">
-                        <option value="">Pilih Kategori Pekerja</option>
-                        @foreach ($kategori_pekerja as $kategori)
-                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                        @endforeach
-                    </select>
-                    @error('kategoripekerja_id')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>  
-                    @enderror
-                </div>
-            </div> --}}
+        
+            <!-- Submit Button -->
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
                     Simpan
                 </button>
             </div>
         </form>
+        
     </div>
 </div>
 

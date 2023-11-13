@@ -20,5 +20,6 @@
         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{{route( 'pekerja') }}">Services</a></li>
         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{{route( 'review') }}">Review</a></li>
         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{{route( 'contact') }}">Contact</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{{route( 'notifikasi') }}">Notification</a></li>
     </ul>
 </div><!-- /.navbar-collapse -->

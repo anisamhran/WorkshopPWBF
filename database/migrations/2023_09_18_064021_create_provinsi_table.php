@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('provinsi', function (Blueprint $table) {
             $table->id();
             $table->string('nama_provinsi');
+            $table->dateTime('deleted_at')->nullable;
             $table->timestamps();
         });
     }
