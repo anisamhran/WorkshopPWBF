@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_provinsi');
             $table->dateTime('deleted_at')->nullable;
+            $table->date('deleted_at');
             $table->timestamps();
         });
     }

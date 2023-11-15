@@ -129,6 +129,21 @@
             </div>
         
             <!-- Submit Button -->
+            <div class="row mb-3">
+                <label for="kategoripekerja_id" class="col-sm-2 col-form-label">Kategori Pekerja</label>
+                <div class="col-sm-10">
+                    <select class="form-control form-control-sm @error('kategoripekerja_id') is-invalid @enderror" id="kategoripekerja_id" name="kategoripekerja_id">
+                        @foreach ($kategori_pekerja as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                    @error('kategoripekerja_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>  
+                    @enderror
+                </div>
+            </div>
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
                     Simpan

@@ -3,6 +3,7 @@
 use App\Models\KotaModel;
 use App\Models\PekerjaModel;
 use App\Models\ProvinsiModel;
+use App\Models\KategoriPekerjaModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,17 @@ Route::get('/', function () {
     $kotas = KotaModel::all();
     $pekerjas = PekerjaModel::all()->take(5);
     return view('frontend.homepage',compact('provinsis','kotas', 'pekerjas'));
+    $kategoris = KategoriPekerjaModel::all();
+
+    return view('frontend.homepage',compact('provinsis','kotas','kategoris'));
 });
 
 
 //ADMIN
 Route::group(['middleware' => 'role:1'], function () {
+// Route::middleware(['rolemiddleware:1'])->group(function () {
+// =======
+// Route::middleware(['role:1'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
     Route::get('/master-pekerja', [\App\Http\Controllers\PekerjaController::class, 'index'])->name('master-pekerja');
@@ -79,6 +86,26 @@ Route::get('/form-pembayaran', [\App\Http\Controllers\HomeController::class, 'fo
 Route::get('/notifikasi', [\App\Http\Controllers\KontrakController::class, 'notifikasi'])->name('notifikasi');
 
 });
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
+route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
+Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
+// 
+    // Route::middleware(['role:3'])->group(function () {
+        // Rute-rute yang hanya dapat diakses oleh manager
+        Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
+
+    // });
+
+// Route::middleware(['role:2'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh user yang sudah login
+// });
+
+
+// Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
+
+
 
 
 //USER

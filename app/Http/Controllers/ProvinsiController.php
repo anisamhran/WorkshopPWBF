@@ -55,7 +55,7 @@ class ProvinsiController extends Controller
         
         $provinsi->save();
         
-        return redirect()->route('masterprovinsi')->with('success', 'Data provinsi berhasil diperbarui');
+        return redirect()->route('master-provinsi')->with('success', 'Data provinsi berhasil diperbarui');
     }
 
     /**
