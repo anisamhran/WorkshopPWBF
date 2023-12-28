@@ -14,7 +14,7 @@ class PekerjaModel extends Model
     protected $dates = ['deleted_at']; 
 
     public function kategori_pekerja(){
-        return $this->belongsTo(KategoriPekerjaModel::class);
+        return $this->belongsTo(KategoriPekerjaModel::class, 'kategoripekerja_id');
     }
 
     public function kota(){

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('transaksi_kontrak_id');
-            $table->date('tgl_pembayaran');
+            $table->date('tgl_pembayaran')->default(now());
             $table->boolean('lunas')->default(false);
             $table->boolean('status')->default(0);
             $table->timestamps();

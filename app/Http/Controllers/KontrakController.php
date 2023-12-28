@@ -2,65 +2,119 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PekerjaModel;
 use Illuminate\Http\Request;
-use App\Models\transaksi_kontrak; // Replace kontrak with the actual model you are using
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Models\transaksi_kontrak; // Replace kontrak with the actual model you are using
+use App\Models\User;
 
 class KontrakController extends Controller
 {
-
-    public function notifikasi()
+    
+    public function notifikasi($id)
     {
-        return view('frontend.notification');
+        $user = auth()->user();
+        $kontrak = transaksi_kontrak::find($id);
+        return view('frontend.detail-pembayaran', compact('kontrak','user'));
     }
-    public function form_kontrak()
+    
+    public function form_kontrak($id)
     {
-        return view('frontend.kontrak');
+        $pekerja = PekerjaModel::find($id);
+        return view('frontend.kontrak', compact('pekerja'));
     }
     public function store(Request $request)
     {
-        // Validate the form data
         $request->validate([
-            'nama' => 'required|string',
-            'alamat' => 'required|string',
-            'lama_kontrak' => 'required|integer',
-            'nomor_hp' => 'required|string',
-            'email' => 'required|email',
             'kebutuhan' => 'required|string',
             'tgl_mulai_kontrak' => 'required|date',
-            'tgl_akhir_kontrak' => 'required|date',
-            'foto_ktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation as needed
+            'pekerja_id' => 'required',
         ]);
 
-        // Handle file upload (Fotocopy KTP)
-        if ($request->hasFile('foto_ktp')) {
-            $file = $request->file('foto_ktp');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('uploads/ktp_customer', $fileName, 'public'); // Save the file to the storage/uploads/ktp_customer directory
-        } else {
-            $fileName = null;
-        }
+
+        $pekerja = PekerjaModel::find($request->input('pekerja_id'));
+         $gaji = $pekerja->gaji;
 
         // Create a new instance of your model
         $kontrak = new transaksi_kontrak(); // Replace kontrak with the actual model you are using
+        $user = auth()->user();
+
+        $kontrak->status = 'unpaid';
 
         // Set the model attributes with the form data
-        $kontrak->nama = $request->input('nama');
-        $kontrak->alamat = $request->input('alamat');
-        $kontrak->lama_kontrak = $request->input('lama_kontrak');
-        $kontrak->nomor_hp = $request->input('nomor_hp');
-        $kontrak->email = $request->input('email');
+        // $kontrak->status = 'unpaid';
         $kontrak->kebutuhan = $request->input('kebutuhan');
         $kontrak->tgl_mulai_kontrak = $request->input('tgl_mulai_kontrak');
-        $kontrak->tgl_akhir_kontrak = $request->input('tgl_akhir_kontrak');
-        $kontrak->foto_ktp = $fileName; // Save the file name in the database
         $kontrak->users_id = Auth::id();
+        $pekerja_id = $request->input('pekerja_id');
+        $kontrak->pekerja_id = $pekerja_id;
         $kontrak->pekerja_id = $request->input('pekerja_id');
+
+
+        $tgl_mulai = strtotime($request->input('tgl_mulai_kontrak'));
+        // $kontrak->lama_kontrak = $diff_in_days;
+
+        $interview = 150000;
+        // $kontrak->gaji = $gaji; // Assuming 'gaji' is provided in the form
+        $kontrak->total_price = $interview;
         // Save the model to the database
         $kontrak->save();
 
-        // Redirect back or to a success page
-        return redirect()->route('notifikasi')->with('success', 'Data provinsi berhasil disimpan');
-    }
+           // Set Midtrans configuration
+    \Midtrans\Config::$serverKey = config('midtrans.server_key');
+    \Midtrans\Config::$isProduction = false; // Set to true for production
+    \Midtrans\Config::$isSanitized = true; // Set to true for production
+    \Midtrans\Config::$is3ds = true; // Set to true for production
+
+    // Create Snap API parameters
+    $params = [
+        'transaction_details' => [
+            'order_id' => $kontrak->id,
+            'gross_amount' => $kontrak->total_price,
+        ],
+        'customer_details' => [
+            'nama' => $user->nama,
+            'nomor_hp' => $user->no_hp,
+        ],
+    ];
+
+    // Get Snap token
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
+            // dd($snapToken);
+                    // Redirect back or to a success page
+    return view('frontend.pembayaran', compact('kontrak', 'snapToken', 'user'));    
+}
+
+        public function callback(Request $request)
+        {   
+            $serverKey = config('midtrans.server_key');
+            $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+            if ($hashed == $request->signature_key) {
+                Log::info('Callback Data: ' . json_encode($request->all()));
+            
+                if ($request->transaction_status == 'capture') {
+                    Log::info('Updating status to paid...');
+                    $kontrak = transaksi_kontrak::find($request->order_id);
+                    $kontrak->update(['status' => 'paid']);
+                    Log::info('Status updated successfully.');
+                }
+            }
+            
+        }
+
+        public function history()
+        {
+            // Get the currently authenticated user
+            $user = Auth::user();
+        
+            // Retrieve all transactions associated with the user
+            $orders = transaksi_kontrak::where('users_id', $user->id)->get();
+        
+            // Pass the transactions to the view
+            return view('frontend.transaction-history', compact('orders'));
+        }
+
+        
 }

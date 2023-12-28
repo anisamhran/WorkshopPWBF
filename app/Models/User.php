@@ -55,7 +55,10 @@ class User extends Authenticatable
     }
 
     public function kontrak(){
-        return $this->hasMany(transaksi_kontrak::class);
+        return $this->hasMany(transaksi_kontrak::class,'users_id');
+    }
+    public function message(){
+        return $this->hasMany(ContactModel::class);
     }
 
     public function role(){

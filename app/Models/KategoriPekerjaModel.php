@@ -12,4 +12,8 @@ class KategoriPekerjaModel extends Model
     protected $table = 'kategori_pekerja';
     use SoftDeletes;    
     protected $dates = ['deleted_at']; 
+
+    public function pekerja(){
+    return $this->hasMany(PekerjaModel::class);
+    }
 }

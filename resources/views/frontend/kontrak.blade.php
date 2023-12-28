@@ -1,91 +1,88 @@
 @extends('frontend.partials.main')
 
-@section('title')
-   <h1>Form Pengajuan Kontrak</h1> 
-@endsection
-
 @section('content')
-<div class="register-area" style="background-color: rgb(249, 249, 249);">
-    <div class="content-area recent-property padding-top-40">
-        <div class="container">  
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2"> 
-                    <div class="box-for overflow">                         
-                        <div class="col-md-12 col-xs-12 login-blocks">
-                            <h2>Form Pengajuan Kontrak : </h2> 
-                            <form action="{{ route('save-form-kontrak') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="nama">Nama Lengkap</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" value="{{ auth()->user()->nama }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="alamat">Alamat Tujuan</label>
-                                    <input type="text" name="alamat" class="form-control" id="alamat" value="{{ auth()->user()->alamat }}">
-                                </div>
-                                    <div class="form-group">
-                                        <label for="lama_kontrak">Lama Kontrak </label>
-                                        <select name="lama_kontrak" class="form-control" id="lama_kontrak" type="number">
-                                            <option value="1">1 Bulan</option>
-                                            <option value="2">2 Bulan</option>
-                                            <option value="3">3 Bulan</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nomor_hp">Nomor Whatsapp</label>
-                                        <input type="text" name="nomor_hp" class="form-control" id="nohp" value="{{ auth()->user()->no_hp }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" class="form-control" id="email" value="{{ auth()->user()->email }}">
-                                    </div>
-                                <div class="form-group">
-                                    <label for="kebutuhan">Deskripsi Kebutuhan</label>
-                                    <input type="text" name="kebutuhan" class="form-control" id="kebutuhan">
-                                </div>
-                                <div class="form-group">
-                                    <label for="kebutuhan">Tanggal mulai kontrak</label>
-                                    <input type="date" name="tgl_mulai_kontrak" class="form-control" id="tgl_mulai_kontrak">
-                                </div>
-                                <div class="form-group">
-                                    <label for="kebutuhan">Tanggal akhir kontrak</label>
-                                    <input type="date" name="tgl_akhir_kontrak" class="form-control" id="tgl_akhir_kontrak">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="kebutuhan">Nominal Pembayaran</label>
-                                    <input type="int" name="tgl_akhir_kontrak" class="form-control" id="kebutuhan">
-                                </div> --}}
-                                <div class="form-group">
-                                    <label for="foto_ktp">Fotocopy KTP</label>
-                                    <input class="form-control form-control-sm @error('foto_ktp') is-invalid @enderror" id="foto_ktp" type="file" name="foto_ktp">
-                                </div>
-                                <input type="hidden" name="pekerja_id" value="{{ $pekerja_id }}">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-default">Kirim Pengajuan</button>
-                                </div>
-                            </form>
+        <!-- Blog Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="text-center mb-5 wow fadeInUp" data-wow-delay=".3s">
+                    <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Our Blog</h5>
+                    <h1 class="display-5">Latest Blog & News</h1>
+                </div>
+                <div class="wow fadeInUp" data-wow-delay=".5s">
+                    <div class="row">
+                    <div class="blog-item col-lg-6">
+                        <img src="{{ asset('uploads/foto_pekerja/'  . $pekerja->foto_pekerja) }}" class="img-fluid w-100 rounded-top" alt="">
+                         <div class="rounded-bottom bg-light">
+                            <div class="d-flex justify-content-between p-4 pb-2">
+                                <span class="pe-2 text-dark"><i class="fa fa-user me-2"></i>{{ $pekerja->nama_pekerja }}</span>
+                                <span class="text-dark"><i class="fas fa-calendar-alt me-2"></i>Rp {{ number_format($pekerja->gaji, 0, ',', '.') }}/Month</span>
+                            </div>
+                            <div class="px-4 pb-0">
+                                <h4 value="{{ $pekerja->kategoripekerja_id }}">{{ $pekerja->kategori_pekerja->nama_kategori }}</h4>
+                                <p>{{ $pekerja->deskripsi_pekerja }}</p>
+                            </div>
+                            <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn">
+                                <a href="#" type="button" class="btn btn-primary border-0"></a>
+                                <a href="#" class="my-auto btn-primary border-0"></a>
+                            </div>
                         </div>
                     </div>
-                </div>    
-            </div>
-           
+                    <div class="blog-item col-lg-6">
+                                        <form action="{{ route('save-form-kontrak') }}" method="post" enctype="multipart/form-data" class="border p-4">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <label for="kebutuhan">Deskripsi Kebutuhan</label>
+                                                <input type="text" name="kebutuhan" class="form-control" id="kebutuhan">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="tgl_mulai_kontrak">Tanggal Interview</label>
+                                                <input type="date" name="tgl_mulai_kontrak" class="form-control" id="tgl_mulai_kontrak" min="{{ now()->toDateString() }}" required >
+                                            </div>
+                                            {{-- <div class="form-group mb-3">
+                                                <label for="tgl_mulai_kontrak">Nama</label>
+                                                <input type="text" name="nama" class="form-control" id="nama" readonly value="{{ auth()->user()->nama }}" >
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="tgl_mulai_kontrak">Email</label>
+                                                <input type="text" name="email" class="form-control" id="email" readonly value="{{ auth()->user()->email }}" >
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="tgl_mulai_kontrak">No Whatsapp</label>
+                                                <input type="text" name="no_hp" class="form-control" id="no_hp" readonly value="{{ auth()->user()->no_hp }}" >
+                                            </div> --}}
+
+                                            <input type="hidden" name="pekerja_id" value="{{ $pekerja->id }}">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary border-0 rounded-pill px-4 py-3 mt-5 float-end" >Submit</button>                      
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
         </div>
-    </div> 
+        <!-- Blog End -->
 
-    {{-- <script>
-        // Add an event listener to the "lama_kontrak" select field
-        document.getElementById('lama_kontrak').addEventListener('change', function() {
-            // Get the selected value
-            var selectedDuration = parseInt(this.value);
-
-            // You need to replace this with the actual salary of the worker
-            var currentSalary = 5000000; // Example salary
-
-            // Calculate the nominal payment
-            var nominalPayment = selectedDuration * currentSalary;
-
-            // Update the "nominal_pembayaran" input field
-            document.getElementById('nominal_pembayaran').value = nominalPayment;
-        });
-    </script> --}}
+        <!-- Modal -->
+        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>Anda akan diarahkan ke metode pembayaran. </p>
+            <p>Tagihan anda : Rp 150.000</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary " onclick="window.location={{ route('save-form-kontrak') }}">Continue</button>
+            </div>
+        </div>
+        </div>
+        </div> --}}
+    
 @endsection

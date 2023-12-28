@@ -1,11 +1,22 @@
 @extends('admin.partials.main')
 
+@section('title')
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">City</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Province</li>
+    </ol>
+  </div>
+@endsection
+
 @section('content')
-<h3>Data Kota</h3>
+<div class="col-lg-12">
 <div class="card">
     <div class="card-header">
       <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ route('create-kota') }}'">
-        <i class="fas fa-plus-circle"></i> Tambah Kota
+        <i class="fas fa-plus-circle"></i> Add City
       </button>
     </div>
     <div class="card-body">
@@ -38,7 +49,7 @@
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger" title="Hapus data" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                              <i class="fas fa-trash-alt"></i> Hapus
+                              <i class="fas fa-trash-alt"></i>Delete
                           </button>
                       </form> 
                   </td>    
@@ -48,4 +59,5 @@
      </table>
     </div>
   </div>   
+</div>
 @endsection

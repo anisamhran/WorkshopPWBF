@@ -4,6 +4,7 @@ use App\Models\KotaModel;
 use App\Models\PekerjaModel;
 use App\Models\ProvinsiModel;
 use App\Models\KategoriPekerjaModel;
+use App\Models\transaksi_kontrak;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,19 +22,13 @@ Route::get('/', function () {
     $provinsis = ProvinsiModel::all();
     $kotas = KotaModel::all();
     $pekerjas = PekerjaModel::all()->take(5);
-    return view('frontend.homepage',compact('provinsis','kotas', 'pekerjas'));
-    $kategoris = KategoriPekerjaModel::all();
-
-    return view('frontend.homepage',compact('provinsis','kotas','kategoris'));
+    $order = transaksi_kontrak::all();
+    return view('frontend.homepage',compact('provinsis','kotas', 'pekerjas', 'order'));
 });
 
 
 //ADMIN
 Route::group(['middleware' => 'role:1'], function () {
-// Route::middleware(['rolemiddleware:1'])->group(function () {
-// =======
-// Route::middleware(['role:1'])->group(function () {
-    // Rute-rute yang hanya dapat diakses oleh admin
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
     Route::get('/master-pekerja', [\App\Http\Controllers\PekerjaController::class, 'index'])->name('master-pekerja');
     Route::get('/create-pekerja', [\App\Http\Controllers\PekerjaController::class, 'create'])->name('create-pekerja');
@@ -43,6 +38,7 @@ Route::group(['middleware' => 'role:1'], function () {
     Route::delete('/hapus-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'destroy'])->name('destroy-pekerja');
     Route::get('/data-pekerja-dihapus', [\App\Http\Controllers\PekerjaController::class, 'deleted'])->name('deleted-pekerja');
     Route::get('/restore-pekerja/{id}', [\App\Http\Controllers\PekerjaController::class, 'restore'])->name('restore-pekerja');
+
 
     Route::get('/review-admin', [\App\Http\Controllers\AdminController::class, 'admin_review'])->name('adminreview');
     Route::get('/contact-admin', [\App\Http\Controllers\AdminController::class, 'admin_contact'])->name('admincontact');
@@ -68,6 +64,20 @@ Route::group(['middleware' => 'role:1'], function () {
     Route::delete('/hapus-kota/{id}', [\App\Http\Controllers\KotaController::class, 'destroy'])->name('destroy-kota');
     Route::get('/data-kota-dihapus', [\App\Http\Controllers\KotaController::class, 'deleted'])->name('deleted-kota');
     Route::get('/restore-kota/{id}', [\App\Http\Controllers\KotaController::class, 'restore'])->name('restore-kota');
+
+
+    Route::get('/master-kategori', [\App\Http\Controllers\KategoriPekerjaController::class, 'index'])->name('master-kategori');
+    Route::get('/create-kategori', [\App\Http\Controllers\KategoriPekerjaController::class, 'create'])->name('create-kategori');
+    Route::post('/save-kategori', [\App\Http\Controllers\KategoriPekerjaController::class, 'store'])->name('save-kategori');
+    Route::get('/edit-kategori/{id}', [\App\Http\Controllers\KategoriPekerjaController::class, 'edit'])->name('edit-kategori');
+    Route::put('/edit-kategori/{id}', [\App\Http\Controllers\KategoriPekerjaController::class, 'update'])->name('update-kategori');
+    Route::delete('/hapus-kategori/{id}', [\App\Http\Controllers\KategoriPekerjaController::class, 'destroy'])->name('destroy-kategori');
+    Route::get('/data-kategori-dihapus', [\App\Http\Controllers\KategoriPekerjaController::class, 'deleted'])->name('deleted-kategori');
+    Route::get('/restore-kategori/{id}', [\App\Http\Controllers\KategoriPekerjaController::class, 'restore'])->name('restore-kategori');
+
+    Route::get('/messages', [\App\Http\Controllers\HomeController::class, 'admcontact'])->name('admin-contact');
+    Route::get('/transactions', [\App\Http\Controllers\HomeController::class, 'transaction'])->name('admin-transactions');
+
 });
 
 //MANAGER
@@ -80,46 +90,38 @@ Route::group(['middleware' => 'role:1'], function () {
 
 Route::group(['middleware' => 'role:2'], function () {
     // Rute-rute yang hanya dapat diakses oleh user yang sudah login
-Route::get('/form-kontrak', [\App\Http\Controllers\KontrakController::class, 'form_kontrak'])->name('form-kontrak');
-Route::post('/save-form-kontrak', [\App\Http\Controllers\KontrakController::class, 'store'])->name('save-form-kontrak');
-Route::get('/form-pembayaran', [\App\Http\Controllers\HomeController::class, 'form_pembayaran'])->name('form-pembayaran');
-Route::get('/notifikasi', [\App\Http\Controllers\KontrakController::class, 'notifikasi'])->name('notifikasi');
+Route::get('/form-kontrak/{pekerja_id}', [\App\Http\Controllers\KontrakController::class, 'form_kontrak'])->name('form-kontrak');
+Route::post('/payment', [\App\Http\Controllers\KontrakController::class, 'store'])->name('save-form-kontrak');
+Route::get('/transaction-history/{id}', [\App\Http\Controllers\KontrakController::class, 'history'])->name('transaction-history');
+Route::get('/notifikasi/{id}', [\App\Http\Controllers\KontrakController::class, 'notifikasi'])->name('notifikasi');
+
+
+Route::get('/profil/{id}', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profil');
+Route::get('/edit-profil/{id}', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('edit-profil');
+Route::put('/edit-profil/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update-profil');
 
 });
 
-Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
-Route::get('/add-pekerja', [\App\Http\Controllers\AdminController::class, 'addpekerja'])->name('addpekerja');
-route::get('/edit-pekerja', [\App\Http\Controllers\AdminController::class, 'editpekerja'])->name('editpekerja');
-Route::get('/data-pekerja', [\App\Http\Controllers\AdminController::class, 'datapekerja'])->name('datapekerja');
-// 
     // Route::middleware(['role:3'])->group(function () {
         // Rute-rute yang hanya dapat diakses oleh manager
         Route::get('/manager', [\App\Http\Controllers\ManagerController::class, 'index'])->name('dashboard');
 
     // });
 
-// Route::middleware(['role:2'])->group(function () {
-    // Rute-rute yang hanya dapat diakses oleh user yang sudah login
-// });
-
-
-// Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('landingpage');
-
-
-
 
 //USER
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/pekerja', [\App\Http\Controllers\HomeController::class, 'pekerja'])->name('pekerja');
 Route::get('/detail-pekerja/{id}', [\App\Http\Controllers\HomeController::class, 'detail_pekerja'])->name('detail-pekerja');
-Route::get('/pekerja', [\App\Http\Controllers\HomeController::class, 'pekerja'])->name('pekerja');
 Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [\App\Http\Controllers\HomeController::class, 'storemessage'])->name('save-message');
 Route::get('/review', [\App\Http\Controllers\HomeController::class, 'review'])->name('review');
 
 
-
+Route::group(['middleware' => ['web']], function () {
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'storeUser'])->name('register');
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::post('/login-proses', [\App\Http\Controllers\AuthController::class, 'login_proses'])->name('login-proses');
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+});

@@ -15,7 +15,8 @@ class PekerjaController extends Controller
 {
     public function index()
     {
-        $pekerjas = PekerjaModel::all(); // Mengganti dari $pekerja menjadi $pekerjas
+        $pekerjas = PekerjaModel::with('kategori_pekerja')->get();
+        // Di dalam method yang sesuai pada controller
         return view('admin.pekerja.datapekerja', compact('pekerjas')); // Juga mengganti 'pekerja' menjadi 'pekerjas'
     }
 

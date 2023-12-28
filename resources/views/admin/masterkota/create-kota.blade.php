@@ -1,26 +1,37 @@
 @extends('admin.partials.main')
 
+@section('title')
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create City</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Province</li>
+    </ol>
+  </div>
+@endsection
+
 @section('content')
-<h3>Form Data Pekerja Baru</h3>
+<div class="col-lg-12">
 <div class="card">
     <div class="card-header">
       <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ route('master-kota') }}'">
-         Kembali
+         Back
       </button>
     </div>
     <div class="card-body">
         <form method="POST" action="{{ route('save-kota') }}">
         @csrf
-        <form>
+            <div class="form-group row mb-3">
+              <label for="id_provinsi" class="col-sm-2 col-form-label">ID</label>
+              <div class="col-sm-2">
+                  <input type="text" class="form-control form-control-sm" id="id_provinsi" name="id_provinsi" readonly value="{{ $newlyCreatedId }}">
+              </div>
+            </div>      
             <div class="row mb-3">
               <label for="nama_kota" class="col-sm-2 col-form-label">Nama Kota</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control form-control-sm @error('nama_kota') is-invalid @enderror" id="nama_kota" name="nama_kota">
-                @error('nama_kota')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-            @enderror
+                <input type="text" class="form-control form-control-sm" id="nama_kota" name="nama_kota">
             </div>
             </div>
             <div class="row mb-3">
@@ -32,16 +43,14 @@
                       @endforeach
                   </select>
               </div>
-          </div>
-          
-                      <div class="col-sm-6">
-                        <button type="submit" class="btn btn-sm btn-success">
-                            Save
-                        </button>
-                      </div>
-                    </div>
-              </div>
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
+                Save
+              </button>
             </div>
           </form>
-
+    </div>
+  </div>
+</div>
 @endsection

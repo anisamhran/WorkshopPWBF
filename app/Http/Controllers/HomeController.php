@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactModel;
+use App\Models\KategoriPekerjaModel;
 use App\Models\KotaModel;
 use App\Models\PekerjaModel;
 use App\Models\ProvinsiModel;
+use App\Models\transaksi_kontrak;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -19,12 +24,11 @@ class HomeController extends Controller
         $pekerjas = PekerjaModel::all()->take(5);
         return view('frontend.homepage',compact('provinsis', 'kotas','pekerjas'));
     }
-    public function notifikasi()
+    public function transaction()
     {
-        // $provinsis = ProvinsiModel::all();
-        // $kotas = KotaModel::all();
+        $transactions = transaksi_kontrak::all();
 
-        return view('frontend.notification');
+        return view('admin.admtransaksi', compact('transactions'));
     }
 
     /**
@@ -34,7 +38,9 @@ class HomeController extends Controller
     {
         $provinsis = ProvinsiModel::all();
         $kotas = KotaModel::all();
-        return view('frontend.pekerja',compact('provinsis', 'kotas'));
+        $pekerjas = PekerjaModel::all();
+        $kategoris = KategoriPekerjaModel::all();
+        return view('frontend.pekerja',compact('provinsis', 'kotas', 'pekerjas', 'kategoris'));
     }
     public function detail_pekerja($id)
     {
@@ -48,23 +54,39 @@ class HomeController extends Controller
         return view('frontend.review');
     }
 
+    public function admcontact()
+    {
+        
+        $messages = ContactModel::all();
+        return view('admin.admessages',compact('messages'));
+    }
+
     public function contact()
     {
         return view('frontend.contact');
     }
   
-    public function form_pembayaran()
-    {
-        return view('frontend.pembayaran');
-    }
+    // public function form_pembayaran($id)
+    // {
+    //     $transaksi_kontrak = transaksi_kontrak::findOrFail($id);
+    //     return view('frontend.pembayaran', compact('transaksi_kontrak'));
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storemessage(Request $request)
     {
-        //
+        $message = new ContactModel();
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
+        $message->subject = $request->input('subject');
+        $message->messages = $request->input('messages');
+        $message->save();
+    
+        return redirect()->route('pekerja')->with('Message berhasil dikirim');
     }
+    
 
     /**
      * Display the specified resource.

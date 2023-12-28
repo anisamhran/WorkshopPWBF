@@ -20,8 +20,12 @@
          */
         public function create()
         {
-        $provinsis = ProvinsiModel::all();
-            return view('admin.masterkota.create-kota', compact('provinsis'));
+            $lastId = KotaModel::max('id');
+
+            // Menambahkan 1 untuk mendapatkan ID baru
+            $newlyCreatedId = $lastId + 1;
+            $provinsis = ProvinsiModel::all();
+            return view('admin.masterkota.create-kota', compact('provinsis', 'newlyCreatedId'));
         }
         
 
@@ -44,26 +48,31 @@
         public function edit($id)
         {
             $kota = KotaModel::find($id);
-            // $provinsis = ProvinsiModel::all(); 
-            // $selectedProvinsi = ProvinsiModel::find($kota->provinsi_id); 
-        
-            return view('admin.masterkota.edit-kota', compact('kota'));
+            $provinsis = ProvinsiModel::all(); 
+
+            return view('admin.masterkota.edit-kota', compact('kota', 'provinsis'));
         }
         
 
         /**
          * Update the specified resource in storage.
          */
-        public function update(Request $request,$id)
+        public function update(Request $request, $id)
         {
-        $kota = KotaModel::find($id);
+            // Temukan data Kota berdasarkan ID
+            $kota = KotaModel::find($id);
 
-        $kota->nama_kota = $request->input('nama_kota');
-            
-        $kota->save();
-            
+            // Update kolom-kolom yang diperlukan
+            $kota->nama_kota = $request->input('nama_kota');
+            $kota->provinsi_id = $request->input('provinsi_id');
+
+            // Simpan perubahan
+            $kota->save();
+        
+            // Redirect dengan pesan sukses
             return redirect()->route('master-kota')->with('success', 'Data provinsi berhasil diperbarui');
         }
+        
 
         /**
          * Remove the specified resource from storage.

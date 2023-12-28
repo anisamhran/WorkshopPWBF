@@ -1,11 +1,77 @@
 @extends('frontend.partials.main')
-@section('title')
-    Pekerja
-@endsection
-
 
 @section('content')
-<div class="page-head"> 
+
+        <!-- Get In Touch Start -->
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay=".3s">
+            <div class="container py-5">
+                <div class="bg-light px-4 py-5 rounded">
+                    <div class="text-center">
+                        <h1 class="display-5 mb-5">Find Your Pest Control Services</h1>
+                    </div>
+                    <form class="text-center mb-4" action="#">
+                        <div class="row g-4">
+                            <div class="col-xl-10 col-lg-12">
+                                <div class="row g-4">
+                                    <div class="col-md-6 col-xl-3">
+                                        <select class="form-select p-3 border-0">
+                                            <option value="Type Of Service" class="">Type Of Service</option>
+                                            @foreach ($kategoris as $kategori)
+                                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-xl-3">
+                                            <select class="form-select p-3 border-0">
+                                            <option value="Type Of Service" class="">Province</option>
+                                            @foreach ($provinsis as $provinsi)
+                                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
+                                            @endforeach
+                                        </select>                                    
+                                    </div>
+                                    <div class="col-md-6 col-xl-3">
+                                        <select class="form-select p-3 border-0">
+                                            <option value="Type Of Service" class="">City</option>
+                                            @foreach ($kotas as $kota)
+                                            <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
+                                            @endforeach
+                                        </select>                                   
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-12">
+                                <input type="button" class="btn btn-primary w-100 p-3 border-0" value="GET STARTED">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Get In Touch End -->
+
+
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    @foreach ($pekerjas->take(5) as $pekerja)
+                    <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="rounded team-item">
+                            <a href="{{ route('detail-pekerja', ['id' => $pekerja->id]) }}">
+                            <img src="{{ asset('uploads/foto_pekerja/' . $pekerja->foto_pekerja) }}" class="img-fluid w-100 rounded-top border border-bottom-0" alt="">
+                            </a>
+                            <div class="team-content bg-primary text-dark text-center py-3">
+                                <span class="fs-4 fw-bold">{{ $pekerja->nama_pekerja }}</span>
+                                <p class="text-muted mb-0">Rp {{ number_format($pekerja->gaji, 0, ',', '.') }}/Month</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
+{{-- <div class="page-head"> 
     <div class="container">
         <div class="row">
             <div class="page-head-content">
@@ -13,11 +79,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- End page header -->
 
 <!-- property area -->
-<div class="properties-area recent-property" style="background-color: #FFF;">
+{{-- <div class="properties-area recent-property" style="background-color: #FFF;">
     <div class="container">  
         <div class="row">
              
@@ -169,197 +235,25 @@
 
             <div class="col-md-12 clear"> 
                 <div id="list-type" class="proerty-th">
-                    <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                    <div class="row">
+                        @foreach ($pekerjas->take(5) as $pekerja)
+                            <div class="col-md-3 col-sm-3 col-xs-3 mb-4">
+                                <div class="blg-thumb p0">
+                                    <a href="{{ route('detail-pekerja', ['id' => $pekerja->id]) }}">
+                                        <img src="{{ asset('uploads/foto_pekerja/' . $pekerja->foto_pekerja) }}" class="img-fluid" alt="{{ $pekerja->nama_pekerja }}" />
+                                    </a>
+                                    <span class="property-seeker">
+                                        <b class="b-1">A</b>
+                                        <b class="b-2">S</b>
+                                    </span>
                                 </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
+                                <div class="blg-entry">
+                                    <h6><a href="{{ route('detail-pekerja', ['id' => $pekerja->id]) }}">{{ $pekerja->nama_pekerja }}</a></h6>
+                                    <span class="property-price">$ 300,000</span>
                                 </div>
-
-
                             </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
-
-                        <div class="col-sm-6 col-md-4 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                                </div>
-
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b> Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right"> $ 300,000</span>
-                                    <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                    <div class="property-icon">
-                                        <img src="assets/img/icon/bed.png">(5)|
-                                        <img src="assets/img/icon/shawer.png">(2)|
-                                        <img src="assets/img/icon/cars.png">(1)  
-                                    </div>
-                                </div> 
-                            </div>
-                        </div> 
+                        @endforeach
+                    </div>
                 </div>
             </div>
             
@@ -380,5 +274,5 @@
         </div>  
         </div>              
     </div>
-</div>
+</div> --}}
 @endsection

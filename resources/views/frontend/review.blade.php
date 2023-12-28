@@ -1,108 +1,112 @@
 @extends('frontend.partials.main')
-@section('title')
-    Review
-@endsection
-
 
 @section('content')
-<div class="testimonial-area recent-property" style="background-color: #FCFCFC; padding-bottom: 15px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                <!-- /.feature title -->
-                <h2>Our Customers Said  </h2> 
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="row testimonial">
-                <div class="col-md-12">
-                    <div id="testimonial-slider">
-                        <div class="item">
-                            <div class="client-text">                                
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+        <!-- Testiminial Start -->
+        <div class="container-fluid testimonial py-5">
+            <div class="container py-5">
+                <div class="text-center mb-5 wow fadeInUp" data-wow-delay=".3s">
+                    <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Testimonial</h5>
+                    <h1 class="display-5 w-50 mx-auto">What Clients Say About Our Services</h1>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay=".5s">
+                    <div class="testimonial-item">
+                        <div class="testimonial-content rounded mb-4 p-4">
+                            <p class="fs-5 m-0">Lorem ipsum dolor sit amet elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam quis tempor.</p>
+                        </div>
+                        <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
+                            <div class="position-relative">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <div class="position-absolute" style="top: 33px; left: -25px;">
+                                    <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+                                </div>
                             </div>
-                            <div class="client-face wow fadeInRight" data-wow-delay=".9s"> 
-                                <img src="assets/img/client-face1.png" alt="">
+                            <div class="ms-3">
+                                <h4 class="mb-0">Client Name</h4>
+                                <p class="mb-1">Profession</p>
+                                <div class="d-flex">
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="client-text">                                
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content rounded mb-4 p-4">
+                            <p class="fs-5 m-0">Lorem ipsum dolor sit amet elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam quis tempor.</p>
+                        </div>
+                        <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
+                            <div class="position-relative">
+                                <img src="img/testimonial-2.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <div class="position-absolute" style="top: 33px; left: -25px;">
+                                    <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+                                </div>
                             </div>
-                            <div class="client-face">
-                                <img src="assets/img/client-face2.png" alt="">
+                            <div class="ms-3">
+                                <h4 class="mb-0">Client Name</h4>
+                                <p class="mb-1">Profession</p>
+                                <div class="d-flex">
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="client-text">                                
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content rounded mb-4 p-4">
+                            <p class="fs-5 m-0">Lorem ipsum dolor sit amet elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam quis tempor.</p>
+                        </div>
+                        <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
+                            <div class="position-relative">
+                                <img src="img/testimonial-3.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <div class="position-absolute" style="top: 33px; left: -25px;">
+                                    <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+                                </div>
                             </div>
-                            <div class="client-face">
-                                <img src="assets/img/client-face1.png" alt="">
+                            <div class="ms-3">
+                                <h4 class="mb-0">Client Name</h4>
+                                <p class="mb-1">Profession</p>
+                                <div class="d-flex">
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="client-text">                                
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content rounded mb-4 p-4">
+                            <p class="fs-5 m-0">Lorem ipsum dolor sit amet elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam quis tempor.</p>
+                        </div>
+                        <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
+                            <div class="position-relative">
+                                <img src="img/testimonial-4.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <div class="position-absolute" style="top: 33px; left: -25px;">
+                                    <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
+                                </div>
                             </div>
-                            <div class="client-face">
-                                <img src="assets/img/client-face2.png" alt="">
+                            <div class="ms-3">
+                                <h4 class="mb-0">Client Name</h4>
+                                <p class="mb-1">Profession</p>
+                                <div class="d-flex">
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                    <small class="fas fa-star text-primary me-1"></small>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-8 col-md-offset-2"> 
-                <div class="" id="contact1">                        
-                    <h2>Review form</h2>
-                    <form>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="firstname">Firstname</label>
-                                    <input type="text" class="form-control" id="firstname">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="lastname">Lastname</label>
-                                    <input type="text" class="form-control" id="lastname">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="subject">Subject</label>
-                                    <input type="text" class="form-control" id="subject">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" class="form-control"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send message</button>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </form>
-                </div>
-            </div>   
-
         </div>
-    </div>
-</div>
+        <!-- Testiminial End -->
 @endsection

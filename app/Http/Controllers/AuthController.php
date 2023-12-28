@@ -74,7 +74,7 @@
                         'email' => 'required',
                         'password' => 'required',
                         'no_hp' => 'required',
-                        'tgl_lahir' => 'required',
+                        'tgl_lahir' => 'required|before_or_equal:2000-12-31',
                         'alamat' => 'required',
                     ]);
             
@@ -89,7 +89,7 @@
                     $user->save();
             
                     // Redirect ke halaman login atau halaman selanjutnya
-                    return redirect()->route('form-kontrak')->with('success', 'Akun berhasil dibuat. Silakan login.');
+                    return redirect()->route('login')->with('success', 'Akun berhasil dibuat. Silakan login.');
                 }
 
             /**

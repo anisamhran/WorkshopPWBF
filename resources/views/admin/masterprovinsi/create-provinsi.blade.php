@@ -1,35 +1,46 @@
 @extends('admin.partials.main')
 
+@section('title')
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Province</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Province</li>
+    </ol>
+  </div>
+@endsection
+
 @section('content')
-<h3>Form Data Provinsi Baru</h3>
-<div class="card">
-    <div class="card-header">
+<div class="col-lg-12">
+  <!-- Form Basic -->
+  <div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <button type="button" class="btn btn-sm btn-warning" onclick="window.location='{{ route('master-provinsi') }}'">
-         Kembali
-      </button>
-    </div>
+        Back
+      </button>    </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('save-provinsi') }}">
+      <form method="POST" action="{{ route('save-provinsi') }}">
         @csrf
-        <form>
-            <div class="row mb-3">
+            <div class="form-group row mb-3">
+              <label for="id_provinsi" class="col-sm-2 col-form-label">ID</label>
+              <div class="col-sm-2">
+                  <input type="text" class="form-control form-control-sm" id="id_provinsi" name="id_provinsi" readonly value="{{ $newlyCreatedId }}">
+              </div>
+            </div>      
+            <div class="form-group row mb-3">
               <label for="nama_provinsi" class="col-sm-2 col-form-label">Nama Provinsi</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control form-control-sm @error('nama_provinsi') is-invalid @enderror" id="nama_provinsi" name="nama_provinsi">
-                @error('nama_provinsi')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-            @enderror
-            </div>
+                <input type="text" class="form-control form-control-sm" id="nama_provinsi" name="nama_provinsi">
+              </div>
             </div>
             <div class="col-sm-12">
               <button type="submit" class="btn btn-sm btn-success" style="float: right; display: inline-block;">
                   Save
               </button>
           </div>          
-              </div>
-            </form>
+      </form>
+    </div>
+  </div>
 </div>
-
 @endsection

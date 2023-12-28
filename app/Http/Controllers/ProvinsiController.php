@@ -17,8 +17,12 @@ class ProvinsiController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admin.masterprovinsi.create-provinsi');
+    { 
+        $lastId = ProvinsiModel::max('id');
+
+        // Menambahkan 1 untuk mendapatkan ID baru
+        $newlyCreatedId = $lastId + 1;
+        return view('admin.masterprovinsi.create-provinsi', compact('newlyCreatedId'));
 
     }
 
@@ -40,6 +44,8 @@ class ProvinsiController extends Controller
      */
     public function edit(string $id)
     {
+
+        // Menambahkan 1 untuk mendapatkan ID baru
         $provinsi = ProvinsiModel::find($id);
         return view('admin.masterprovinsi.edit-provinsi', compact('provinsi'));
     }
