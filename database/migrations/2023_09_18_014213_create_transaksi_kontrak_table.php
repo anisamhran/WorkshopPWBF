@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->dateTime('tgl_transaksi')->default(now());
             $table->date('tgl_mulai_kontrak');
-            $table->date('tgl_akhir_kontrak');
-            $table->boolean('ubah_alamat');
-            $table->boolean('persetujuan');
+            $table->string('status');
+            // $table->boolean('ubah_alamat');
+            // $table->boolean('persetujuan');
             $table->timestamps();
         });
     }

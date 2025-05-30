@@ -12,8 +12,8 @@ class KotaModel extends Model
 
     protected $table = 'kota';
 
-    use SoftDeletes;    
-    protected $dates = ['deleted_at']; 
+    // use SoftDeletes;    
+    // protected $dates = ['deleted_at']; 
 
     public function provinsi(){
         return $this->belongsTo(ProvinsiModel::class,'provinsi_id', 'id' );

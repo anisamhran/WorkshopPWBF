@@ -12,8 +12,8 @@ class ProvinsiModel extends Model
     use HasFactory;
 
     protected $table = 'provinsi';
-    use SoftDeletes;    
-    protected $dates = ['deleted_at']; 
+    // use SoftDeletes;    
+    // protected $dates = ['deleted_at']; 
 
     public function kota(){
         return $this->hasMany(KotaModel::class, 'id', 'provinsi_id');

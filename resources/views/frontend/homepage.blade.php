@@ -124,7 +124,7 @@
                         </div>
                         <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
                             <div class="position-relative">
-                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <img src="{{asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle py-2" alt="">
                                 <div class="position-absolute" style="top: 33px; left: -25px;">
                                     <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
                                 </div>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
                             <div class="position-relative">
-                                <img src="img/testimonial-2.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <img src="{{asset('img/testimonial-2.jpg')}}" class="img-fluid rounded-circle py-2" alt="">
                                 <div class="position-absolute" style="top: 33px; left: -25px;">
                                     <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
                                 </div>
@@ -172,7 +172,7 @@
                         </div>
                         <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
                             <div class="position-relative">
-                                <img src="img/testimonial-3.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <img src="{{asset('img/testimonial-3.jpg')}}" class="img-fluid rounded-circle py-2" alt="">
                                 <div class="position-absolute" style="top: 33px; left: -25px;">
                                     <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
                                 </div>
@@ -196,7 +196,7 @@
                         </div>
                         <div class="d-flex align-items-center  mb-4" style="padding: 0 0 0 25px;">
                             <div class="position-relative">
-                                <img src="img/testimonial-4.jpg" class="img-fluid rounded-circle py-2" alt="">
+                                <img src="{{asset('img/testimonial-4.jpg')}}" class="img-fluid rounded-circle py-2" alt="">
                                 <div class="position-absolute" style="top: 33px; left: -25px;">
                                     <i class="fa fa-quote-left rounded-pill bg-primary text-dark p-3"></i>
                                 </div>

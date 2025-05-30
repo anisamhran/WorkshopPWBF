@@ -5,8 +5,8 @@
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="text-center mb-5 wow fadeInUp" data-wow-delay=".3s">
-                    <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Our Blog</h5>
-                    <h1 class="display-5">Latest Blog & News</h1>
+                    <h5 class="mb-2 px-3 py-1 text-dark rounded-pill d-inline-block border border-2 border-primary">Kontrak</h5>
+                    <h1 class="display-5">Form Interview</h1>
                 </div>
                 <div class="wow fadeInUp" data-wow-delay=".5s">
                     <div class="row">

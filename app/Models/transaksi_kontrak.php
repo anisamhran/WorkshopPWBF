@@ -12,7 +12,7 @@ class transaksi_kontrak extends Model
     protected $fillable = [     
         'kebutuhan',
         'tgl_mulai_kontrak',
-        'tgl_akhir_kontrak',
+        // 'tgl_akhir_kontrak',
         'users_id',
         'pekerja_id',
         'status',

@@ -10,8 +10,8 @@ class KategoriPekerjaModel extends Model
 {
     use HasFactory;
     protected $table = 'kategori_pekerja';
-    use SoftDeletes;    
-    protected $dates = ['deleted_at']; 
+    // use SoftDeletes;    
+    // protected $dates = ['deleted_at']; 
 
     public function pekerja(){
     return $this->hasMany(PekerjaModel::class);
