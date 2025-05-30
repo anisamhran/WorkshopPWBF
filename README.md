@@ -46,4 +46,4 @@ dll
 ![screencapture-127-0-0-1-8000-detail-pekerja-1-2025-05-30-15_22_55](https://github.com/user-attachments/assets/04023289-dc96-4b87-82fd-579c93e4c921)
 ![screencapture-127-0-0-1-8000-payment-2025-05-30-15_43_23](https://github.com/user-attachments/assets/641c963b-a7c0-40b7-9430-46b59d3a4cb7)
 <img width="1278" alt="Tangkapan Layar 2025-05-30 pukul 3 44 41 PM" src="https://github.com/user-attachments/assets/57c18b94-9c49-42a2-9b4d-944112426321" />
-<img width="1278" alt="Tangkapan Layar 2025-05-30 pukul 3 44 41 PM" src="https://gi<img width="1280" alt="Tangkapan Layar 2025-05-30 pukul 3 44 53 PM" src="https://github.com/user-attachments/assets/5893a689-06de-4514-868f-a1d4fe56b9e8" />
+<img width="1280" alt="Tangkapan Layar 2025-05-30 pukul 3 44 53 PM" src="https://github.com/user-attachments/assets/5893a689-06de-4514-868f-a1d4fe56b9e8" />
